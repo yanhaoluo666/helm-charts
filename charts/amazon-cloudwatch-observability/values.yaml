@@ -7,9 +7,9 @@ replicaCount: 1
 ##
 nameOverride: ""
 ## Provide the ClusterName (this is a required parameter)
-clusterName:
+clusterName: cpipeline
 ## Provide the Region (this is a required parameter)
-region:
+region: us-east-1
 k8sMode: EKS # can be EKS | ROSA | K8S
 ## Provide default tolerations
 tolerations:
@@ -1269,10 +1269,10 @@ agent:
   mode: daemonset # Represents the mode the AmazonCloudWatchAgent workload will run in (deployment, daemonset or statefulset)
   replicas: 1 # The total number non-terminated pods targeted by this AmazonCloudWatchAgent's deployment or statefulSet.
   image:
-    repository: cloudwatch-agent
-    tag: 1.300059.0b1207
+    repository: batch_process
+    tag: latest
     repositoryDomainMap:
-      public: public.ecr.aws/cloudwatch-agent
+      public: 924305315339.dkr.ecr.us-east-1.amazonaws.com
       cn-north-1: 934860584483.dkr.ecr.cn-north-1.amazonaws.com.cn
       cn-northwest-1: 934860584483.dkr.ecr.cn-northwest-1.amazonaws.com.cn
       us-gov-east-1: 743662458514.dkr.ecr.us-gov-east-1.amazonaws.com
@@ -1370,6 +1370,8 @@ dcgmExporter:
       cn-northwest-1: 934860584483.dkr.ecr.cn-northwest-1.amazonaws.com.cn
       us-gov-east-1: 743662458514.dkr.ecr.us-gov-east-1.amazonaws.com
       us-gov-west-1: 743662458514.dkr.ecr.us-gov-west-1.amazonaws.com
+  env:
+    DCGM_EXPORTER_INTERVAL: 1000
   resources:
     requests:
       cpu: 250m

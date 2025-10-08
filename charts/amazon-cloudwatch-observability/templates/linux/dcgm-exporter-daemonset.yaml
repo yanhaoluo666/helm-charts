@@ -27,6 +27,8 @@ spec:
     value: "true"
   - name: "DCGM_EXPORTER_LISTEN"
     value: "{{ .Values.dcgmExporter.service.address }}"
+  - name: "DCGM_EXPORTER_INTERVAL"
+    value: "{{ .Values.dcgmExporter.env.DCGM_EXPORTER_INTERVAL }}"
   - name: NODE_NAME
     valueFrom:
       fieldRef:
